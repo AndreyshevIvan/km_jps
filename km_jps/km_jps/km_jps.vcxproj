@@ -144,6 +144,7 @@
   <ItemGroup>
     <ClCompile Include="Constant.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Node.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Constant.h" />
