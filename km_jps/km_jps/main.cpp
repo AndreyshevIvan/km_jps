@@ -28,15 +28,10 @@ CNode *GetFirstNode(map<size_t, vector<CNode*>> & nodesPriorityQueue)
 
 bool InsertNewNodeToQueueAndCheckIsItWin(CNode *curentNode, const Point & direction, map<size_t, vector<CNode*>> & nodesPriorityQueue, size_t & totalNodeCount)
 {
-	bool result = false;
 	++totalNodeCount;
 	CNode *newNode = CNode::CreateNode(curentNode, direction.x, direction.y);
 	nodesPriorityQueue[CNode::CalculateManhattanDistance(newNode->matrix) + curentNode->GetDepth()].push_back(newNode);
-	if (newNode->GetHash() == Constant::WIN_MATRIX_HASH)
-	{
-		result = true;
-	}
-	return result;
+	return newNode->GetHash() == Constant::WIN_MATRIX_HASH;
 }
 
 bool ProcessQueue(map<size_t, vector<CNode*>> & nodesPriorityQueue, set<size_t> & processedHashes, size_t & totalNodeCount, bool & doesGoalReached)
