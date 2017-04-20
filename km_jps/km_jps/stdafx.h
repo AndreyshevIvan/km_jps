@@ -1,1 +1,12 @@
 #pragma once
+#include <string>
+#include <set>
+#include <map>
+#include <math.h>
+#include <vector>
+#include <fstream>
+#include <utility>
+#include "windows.h"
+#include "psapi.h"
+#include <boost/functional/hash.hpp>
+#include <boost/chrono.hpp>

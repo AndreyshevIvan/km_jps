@@ -142,9 +142,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Constant.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Constant.h" />
+    <ClInclude Include="Input.h" />
+    <ClInclude Include="Matrix.h" />
+    <ClInclude Include="Node.h" />
+    <ClInclude Include="Point.h" />
+    <ClInclude Include="Print.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
