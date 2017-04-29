@@ -18,6 +18,9 @@ public:
 
 	size_t GetDepth() const;
 
+	void SetManhattanDistance(size_t value);
+	size_t GetManhattanDistance() const;
+
 	size_t GetHash() const;
 	void SetHash(size_t value);
 
@@ -29,6 +32,7 @@ public:
 	static size_t CalculateManhattanDistance(const Matrix & matrix);
 	static void CalculateZeroPos(const Matrix & matrix, Point & zeroPos);
 	static CNode *CreateNode(CNode *currentNode, int directionX, int directionY);
+	static CNode *CreateNode(CNode *currentNode, Point && newZeroPos, Matrix && newMatrix, size_t hash, size_t newManhattanDistance);
 
 	Matrix matrix;
 
@@ -37,5 +41,6 @@ private:
 	size_t m_hash = 0;
 	CNode *m_father = nullptr;
 	size_t m_depth = 0;
+	size_t m_manhattanDistance = 0;
 };
 

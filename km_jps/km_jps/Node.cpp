@@ -26,6 +26,16 @@ size_t CNode::GetDepth() const
 	return m_depth;
 }
 
+size_t CNode::GetManhattanDistance() const
+{
+	return m_manhattanDistance;
+}
+
+void CNode::SetManhattanDistance(size_t value)
+{
+	m_manhattanDistance = value;
+}
+
 size_t CNode::GetHash() const
 {
 	return m_hash;
@@ -112,6 +122,18 @@ CNode *CNode::CreateNode(CNode *currentNode, int directionX, int directionY)
 	newNode->SetFather(currentNode);
 	newNode->matrix = currentNode->matrix;
 	swap(newNode->matrix[newNode->GetZeroPos().y][newNode->GetZeroPos().x], newNode->matrix[currentNodeZeroPos.y][currentNodeZeroPos.x]);
+	newNode->SetManhattanDistance(CNode::CalculateManhattanDistance(newNode->matrix));
 	newNode->SetHash(CNode::CalculateMatrixHash(newNode->matrix));
+	return newNode;
+}
+
+CNode *CNode::CreateNode(CNode *currentNode, Point && newZeroPos, Matrix && newMatrix, size_t newHash, size_t newManhattanDistance)
+{
+	CNode *newNode = new CNode;
+	newNode->SetZeroPos(move(newZeroPos));
+	newNode->SetFather(currentNode);
+	newNode->matrix = move(newMatrix);
+	newNode->SetManhattanDistance(newManhattanDistance);
+	newNode->SetHash(newHash);
 	return newNode;
 }
