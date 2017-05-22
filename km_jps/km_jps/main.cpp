@@ -45,14 +45,14 @@ bool ProcessQueue(map<size_t, vector<CNode*>> & nodesPriorityQueue, set<size_t> 
 	Point & firstNodeZeroPos = firstNode->GetZeroPos();
 	if (firstNodeZeroPos.y > 0)
 	{
-		Point newZeroPosTop = Point(firstNodeZeroPos.x + 0, firstNodeZeroPos.y - 1);
+		Point newZeroPosTop = Point(firstNodeZeroPos.x, firstNodeZeroPos.y - 1);
 		Matrix newMatrixTop = firstNode->matrix;
 		swap(newMatrixTop[newZeroPosTop.y][newZeroPosTop.x], newMatrixTop[firstNodeZeroPos.y][firstNodeZeroPos.x]);
 		size_t newManhattanDistance = CNode::CalculateManhattanDistance(newMatrixTop);
 		size_t newHashTop = CNode::CalculateMatrixHash(newMatrixTop);
-		if (!IsHashProcessed(newHashTop, processedHashes) && newManhattanDistance <= firstNode->GetManhattanDistance() && newManhattanDistance <= smallestNewManhattanDistance)
+		if (!IsHashProcessed(newHashTop, processedHashes) && newManhattanDistance <= smallestNewManhattanDistance)
 		{
-			if (newManhattanDistance < firstNode->GetManhattanDistance())
+			if (newManhattanDistance < smallestNewManhattanDistance)
 			{
 				newZeroPos.clear();
 				newMatrix.clear();
@@ -66,14 +66,14 @@ bool ProcessQueue(map<size_t, vector<CNode*>> & nodesPriorityQueue, set<size_t> 
 	}
 	if (firstNodeZeroPos.x < firstNode->matrix.size() - 1)
 	{
-		Point newZeroPosRight = Point(firstNodeZeroPos.x + 1, firstNodeZeroPos.y + 0);
+		Point newZeroPosRight = Point(firstNodeZeroPos.x + 1, firstNodeZeroPos.y);
 		Matrix newMatrixRight = firstNode->matrix;
 		swap(newMatrixRight[newZeroPosRight.y][newZeroPosRight.x], newMatrixRight[firstNodeZeroPos.y][firstNodeZeroPos.x]);
 		size_t newManhattanDistance = CNode::CalculateManhattanDistance(newMatrixRight);
 		size_t newHashRight = CNode::CalculateMatrixHash(newMatrixRight);
-		if (!IsHashProcessed(newHashRight, processedHashes) && newManhattanDistance <= firstNode->GetManhattanDistance() && newManhattanDistance <= smallestNewManhattanDistance)
+		if (!IsHashProcessed(newHashRight, processedHashes) && newManhattanDistance <= smallestNewManhattanDistance)
 		{
-			if (newManhattanDistance < firstNode->GetManhattanDistance())
+			if (newManhattanDistance < smallestNewManhattanDistance)
 			{
 				newZeroPos.clear();
 				newMatrix.clear();
@@ -87,14 +87,14 @@ bool ProcessQueue(map<size_t, vector<CNode*>> & nodesPriorityQueue, set<size_t> 
 	}
 	if (firstNodeZeroPos.y < firstNode->matrix.size() - 1)
 	{
-		Point newZeroPosBottom = Point(firstNodeZeroPos.x + 0, firstNodeZeroPos.y + 1);
+		Point newZeroPosBottom = Point(firstNodeZeroPos.x, firstNodeZeroPos.y + 1);
 		Matrix newMatrixBottom = firstNode->matrix;
 		swap(newMatrixBottom[newZeroPosBottom.y][newZeroPosBottom.x], newMatrixBottom[firstNodeZeroPos.y][firstNodeZeroPos.x]);
 		size_t newManhattanDistance = CNode::CalculateManhattanDistance(newMatrixBottom);
 		size_t newHashBottom = CNode::CalculateMatrixHash(newMatrixBottom);
-		if (!IsHashProcessed(newHashBottom, processedHashes) && newManhattanDistance <= firstNode->GetManhattanDistance() && newManhattanDistance <= smallestNewManhattanDistance)
+		if (!IsHashProcessed(newHashBottom, processedHashes) && newManhattanDistance <= smallestNewManhattanDistance)
 		{
-			if (newManhattanDistance < firstNode->GetManhattanDistance())
+			if (newManhattanDistance < smallestNewManhattanDistance)
 			{
 				newZeroPos.clear();
 				newMatrix.clear();
@@ -108,14 +108,14 @@ bool ProcessQueue(map<size_t, vector<CNode*>> & nodesPriorityQueue, set<size_t> 
 	}
 	if (firstNodeZeroPos.x > 0)
 	{
-		Point newZeroPosLeft = Point(firstNodeZeroPos.x - 1, firstNodeZeroPos.y + 0);
+		Point newZeroPosLeft = Point(firstNodeZeroPos.x - 1, firstNodeZeroPos.y);
 		Matrix newMatrixLeft = firstNode->matrix;
 		swap(newMatrixLeft[newZeroPosLeft.y][newZeroPosLeft.x], newMatrixLeft[firstNodeZeroPos.y][firstNodeZeroPos.x]);
 		size_t newManhattanDistance = CNode::CalculateManhattanDistance(newMatrixLeft);
 		size_t newHashLeft = CNode::CalculateMatrixHash(newMatrixLeft);
-		if (!IsHashProcessed(newHashLeft, processedHashes) && newManhattanDistance <= firstNode->GetManhattanDistance() && newManhattanDistance <= smallestNewManhattanDistance)
+		if (!IsHashProcessed(newHashLeft, processedHashes) && newManhattanDistance <= smallestNewManhattanDistance)
 		{
-			if (newManhattanDistance < firstNode->GetManhattanDistance())
+			if (newManhattanDistance < smallestNewManhattanDistance)
 			{
 				newZeroPos.clear();
 				newMatrix.clear();
